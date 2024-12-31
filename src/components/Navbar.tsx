@@ -71,11 +71,14 @@ const Navbar = () => {
     },
   };
   return (
-    <div className=" h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-24 xl:px-36 text-xl">
+    <div className=" h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 text-xl">
       <div className="hidden md:flex gap-4 w-1/2">
         {links.map((link) => (
           <Navlink link={link} key={link.title} />
         ))}
+        <a className={`rounded p-1 `} href="/cv.pdf" download>
+          CV ↓
+        </a>
       </div>
       <div className="flex gap-8 w-1/2 lg:w-1/4 justify-start md:justify-end">
         <Link href={"https://github.com/furkanislek"} target="_blank">
@@ -122,6 +125,9 @@ const Navbar = () => {
             animate="opened"
             className="absolute top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-8 text-4xl "
           >
+            <a href="/cv.pdf" download>
+              Download CV
+            </a>
             {links.map((link) => (
               <motion.div
                 variants={listItemVariants}
