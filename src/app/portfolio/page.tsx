@@ -45,8 +45,7 @@ const projects = [
 const projectsMobile = [
   {
     href: "https://github.com/furkanislek/PocketPath",
-    imgSrc:
-      "https://private-user-images.githubusercontent.com/76527169/399563060-6976cd51-c798-4b9b-a7db-56c4f9dddccc.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzU3MzU4NjEsIm5iZiI6MTczNTczNTU2MSwicGF0aCI6Ii83NjUyNzE2OS8zOTk1NjMwNjAtNjk3NmNkNTEtYzc5OC00YjliLWE3ZGItNTZjNGY5ZGRkY2NjLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTAxVDEyNDYwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVmZTdlMjE5NjA0NjZiNTg4NTBmYjM3N2MxMTM3MmFkYWQ2ZjJhN2RiMGM2MzgyMzFiYzc4OWM2ODEyOWJlY2EmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.r7TQUFdPuX_QTT14FM-LUBXpiy1VkYHrmFYqrnqBJGM",
+    imgSrc: "/pocketpath.jpg",
     title: "PocketPath",
     description:
       "It was written with Flutter. You can track your money in this application. By setting yourself a timed goal, you can add spending and income. You can also see your future, old and active goals.",
@@ -67,16 +66,14 @@ const projectsMobile = [
   },
   {
     href: "https://github.com/furkanislek/todo-react-native",
-    imgSrc:
-      "https://private-user-images.githubusercontent.com/76527169/329015099-9873a044-9983-48bd-9baa-174cf835f39c.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzU3MzY0MTgsIm5iZiI6MTczNTczNjExOCwicGF0aCI6Ii83NjUyNzE2OS8zMjkwMTUwOTktOTg3M2EwNDQtOTk4My00OGJkLTliYWEtMTc0Y2Y4MzVmMzljLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTAxVDEyNTUxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTNkMWM4Y2FlNjU5ZjdmMWYyMmE2NzZhODZkNzlhZDczMDhhZWI3NjQ4MmEwYTc1ZTA5OGI0Y2VkYzA1NmM0OWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.4tHW_8MrpYfHHVWR_CXHeG01pXG4Dwp9nXNWdzGW-6s",
+    imgSrc: "/todo.jpg",
     title: "To Do App",
     description:
       "In this application made with React native, multiple language and theme selections can be made with redux toolkit. You can access the project source code.",
   },
   {
     href: "https://github.com/furkanislek/patikastore",
-    imgSrc:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/76527169/314514538-0949a7df-848e-4497-bb04-d54269772bf1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250101T125057Z&X-Amz-Expires=300&X-Amz-Signature=f30c9476841ed91ab5fd4f50782b4f0826f6fd77d73130306f25edd95199e281&X-Amz-SignedHeaders=host",
+    imgSrc: "/patikastore.png",
     title: "PatikaStore",
     description:
       "The application made to develop react native within the scope of the pathway.",
