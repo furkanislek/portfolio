@@ -36,14 +36,19 @@ const AboutPage = () => {
               className="w-28 h-28 rounded-full object-cover"
             />
             <h1 className="font-bold text-2xl">BIOGRAPHY</h1>
-            <p className="text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              harum quibusdam cupiditate nobis accusamus sed aut aperiam,
-              reiciendis numquam! Voluptas voluptatibus obcaecati dolore itaque
-              suscipit! Vel doloremque numquam quam nihil.
+            <p className="text-lg text-justify italic">
+              Hi, I'm Furkan. I used to work in a different sector, but I've
+              switched to this one because it's my dream job. I've been working
+              on non-code for years. This year, I started working as a web
+              developer and I am now a full stack developer in the finance
+              sector. We redesign and code legacy codes with DDD, working in
+              accordance with microservice architecture. The technologies I use
+              are .netcore, nextjs, reactjs, mssql, kubernates, redux, elk, figma etc. I
+              also write my own mobile applications with Flutter and React
+              Native. I have some applications in the testing phase.
             </p>
             <span className="italic">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Software Developer
             </span>
             <div className="self-end">
               <svg
@@ -214,16 +219,49 @@ const AboutPage = () => {
                     Software Developer
                   </div>
                   <div className="p-3 text-sm italic">
-                   <ul>
-                    <li>- I have experience working at Intertech in the field of software services for banks as a software developer in the Campaign Management team from CRM teams.  We are creating decision-making infrastructure and screens with JSON logic for the decision mechanism in our project.</li>
-                    <li>- I worked on the microservice transformation of the project containing personnel scorecard information. I saved time by using a multiple condition and table structure with a mapping method and mapping in a single table. I used backend netcore, rabbitmq, kubernetes technologies, nextjs, antd, and redux toolkit technologies for the frontend. </li>
-                    <li>- During this time, I worked with technologies such as Net Core, MsSQL, NextJs, ReactJs, Entity Framework, and Kubernetes.</li>
-                    <li>- On the backend side, I wrote SOLID compatible services using Net Core and Entity Framework.</li>
-                    <li>- On the frontend side, connect to NextJs with Gateway to develop user-friendly screens.  </li>
-                    <li>- Additionally, use auxiliary tools like Jira and Jenkins.</li>
-                    <li>- Using the Ant Design (antd) library for React with TypeScript  </li>
-                    <li>- Most of the projects used the Git version control system, while a few opted for the TFS control system.</li>
-                   </ul>
+                    <ul>
+                      <li>
+                        - I have experience working at Intertech in the field of
+                        software services for banks as a software developer in
+                        the Campaign Management team from CRM teams. We are
+                        creating decision-making infrastructure and screens with
+                        JSON logic for the decision mechanism in our project.
+                      </li>
+                      <li>
+                        - I worked on the microservice transformation of the
+                        project containing personnel scorecard information. I
+                        saved time by using a multiple condition and table
+                        structure with a mapping method and mapping in a single
+                        table. I used backend netcore, rabbitmq, kubernetes
+                        technologies, nextjs, antd, and redux toolkit
+                        technologies for the frontend.{" "}
+                      </li>
+                      <li>
+                        - During this time, I worked with technologies such as
+                        Net Core, MsSQL, NextJs, ReactJs, Entity Framework, and
+                        Kubernetes.
+                      </li>
+                      <li>
+                        - On the backend side, I wrote SOLID compatible services
+                        using Net Core and Entity Framework.
+                      </li>
+                      <li>
+                        - On the frontend side, connect to NextJs with Gateway
+                        to develop user-friendly screens.{" "}
+                      </li>
+                      <li>
+                        - Additionally, use auxiliary tools like Jira and
+                        Jenkins.
+                      </li>
+                      <li>
+                        - Using the Ant Design (antd) library for React with
+                        TypeScript{" "}
+                      </li>
+                      <li>
+                        - Most of the projects used the Git version control
+                        system, while a few opted for the TFS control system.
+                      </li>
+                    </ul>
                   </div>
                   <div className="p-3 text-red-400 text-sm font-semibold">
                     May 2023 - Present
@@ -251,7 +289,13 @@ const AboutPage = () => {
                     Full Stack Software Intern
                   </div>
                   <div className="p-3 text-sm italic">
-                    - At Workintech, we collaborate with sectoral companies on joint projects and provide comprehensive training in the software industry. We have successfully completed approximately 85 projects using ReactJS, NodeJS, Python, PostgreSQL and ExpressJS. Additionally, I served as a support instructor for other trainees and interns on various projects for four months.{" "}
+                    - At Workintech, we collaborate with sectoral companies on
+                    joint projects and provide comprehensive training in the
+                    software industry. We have successfully completed
+                    approximately 85 projects using ReactJS, NodeJS, Python,
+                    PostgreSQL and ExpressJS. Additionally, I served as a
+                    support instructor for other trainees and interns on various
+                    projects for four months.{" "}
                   </div>
                   <div className="p-3 text-red-400 text-sm font-semibold">
                     Oct 2022 - Apr 2023{" "}
@@ -268,8 +312,14 @@ const AboutPage = () => {
                   </div>
                   <div className="p-3 text-sm italic">
                     <ul>
-                      <li>- Upwork - Container Dashboard, Intraday Reporting Dashboard</li>
-                      <li>- R10 - Web Site Speed Optimization, Web Site Seo Application</li>
+                      <li>
+                        - Upwork - Container Dashboard, Intraday Reporting
+                        Dashboard
+                      </li>
+                      <li>
+                        - R10 - Web Site Speed Optimization, Web Site Seo
+                        Application
+                      </li>
                     </ul>
                   </div>
                   <div className="p-3 text-red-400 text-sm font-semibold">

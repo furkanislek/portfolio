@@ -2,16 +2,93 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll } from "framer-motion";
 
+const projects = [
+  {
+    href: "https://github.com/furkanislek/rixit-service",
+    imgSrc: "/rixit.png",
+    title: "Rixit Service One Page",
+    description:
+      "This project is one page made using nextjs and tailwindcss. Pixcel perfect work was done with Figma design. Suitable for responsive design. You can look at the details for demo and source code.",
+  },
+  {
+    href: "https://github.com/furkanislek/Fimple-Credit-Calculate",
+    imgSrc:
+      "https://user-images.githubusercontent.com/76527169/190879487-948d6e29-1e1d-4658-9106-8659ed414c3f.png ",
+    title: "Credit Calculate",
+    description:
+      "React Credit Calculator application. In this project, by using ReactJs, it is possible to determine the monthly installment amount and the total repayment amount based on the credit amount, the number of installments, the monthly interest rate and the installment interval.",
+  },
+  {
+    href: "https://github.com/furkanislek/Portfolio-React",
+    imgSrc: "/old.png",
+    title: "Old Portfolio Site",
+    description:
+      "Old and First portfolio site created with React and Redux Toolkit. Multiple language definitions and theme mode were set with Redux toolkit.",
+  },
+  {
+    href: "https://github.com/furkanislek/Tic-Tac-Toe",
+    imgSrc:
+      "https://user-images.githubusercontent.com/76527169/192136695-376d1b2f-9427-4d80-a63a-de3d0559b5ae.png",
+    title: "Tic-Tac-Toe",
+    description:
+      "Tic-Tac-Toe or XOX game. This game was made only by using javascript. I got the opportunity to participate in the React Practicum by creating this game. You can try the game for fun.",
+  },
+  {
+    href: "https://github.com/furkanislek/Quiz-App/",
+    imgSrc:
+      "https://user-images.githubusercontent.com/76527169/212535326-7a9122a0-979a-44e3-b47f-8aa26674954e.png",
+    title: "Quiz App",
+    description:
+      "In this project I made using React, you can answer the questions in order and see your correct number at the end of the test. You can add or remove as many questions as you want.",
+  },
+];
+const projectsMobile = [
+  {
+    href: "https://github.com/furkanislek/PocketPath",
+    imgSrc:
+      "https://private-user-images.githubusercontent.com/76527169/399563060-6976cd51-c798-4b9b-a7db-56c4f9dddccc.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzU3MzU4NjEsIm5iZiI6MTczNTczNTU2MSwicGF0aCI6Ii83NjUyNzE2OS8zOTk1NjMwNjAtNjk3NmNkNTEtYzc5OC00YjliLWE3ZGItNTZjNGY5ZGRkY2NjLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTAxVDEyNDYwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVmZTdlMjE5NjA0NjZiNTg4NTBmYjM3N2MxMTM3MmFkYWQ2ZjJhN2RiMGM2MzgyMzFiYzc4OWM2ODEyOWJlY2EmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.r7TQUFdPuX_QTT14FM-LUBXpiy1VkYHrmFYqrnqBJGM",
+    title: "PocketPath",
+    description:
+      "It was written with Flutter. You can track your money in this application. By setting yourself a timed goal, you can add spending and income. You can also see your future, old and active goals.",
+  },
+  {
+    href: "https://github.com/furkanislek/students-control-app",
+    imgSrc: "/tudora.png",
+    title: "TUDORA",
+    description:
+      "Written with Flutter. You can get help from other students if you get stuck.You can earn points if your answers are correct. You can earn points by solving weekly quizzes on time. You can make daily plans and check their completion status. With Focus mode, you can focus only on the lesson and earn points when the time is up. You can also follow other students and see your ranking among those you follow and among all users.",
+  },
+  {
+    href: "https://github.com/furkanislek/weather-react-native",
+    imgSrc: "/weather.png",
+    title: "Weather App",
+    description:
+      "You can check the weather in this application made with React native. With your location permission, you can look at your personal location or other locations with search. ",
+  },
+  {
+    href: "https://github.com/furkanislek/todo-react-native",
+    imgSrc:
+      "https://private-user-images.githubusercontent.com/76527169/329015099-9873a044-9983-48bd-9baa-174cf835f39c.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzU3MzY0MTgsIm5iZiI6MTczNTczNjExOCwicGF0aCI6Ii83NjUyNzE2OS8zMjkwMTUwOTktOTg3M2EwNDQtOTk4My00OGJkLTliYWEtMTc0Y2Y4MzVmMzljLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTAxVDEyNTUxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTNkMWM4Y2FlNjU5ZjdmMWYyMmE2NzZhODZkNzlhZDczMDhhZWI3NjQ4MmEwYTc1ZTA5OGI0Y2VkYzA1NmM0OWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.4tHW_8MrpYfHHVWR_CXHeG01pXG4Dwp9nXNWdzGW-6s",
+    title: "To Do App",
+    description:
+      "In this application made with React native, multiple language and theme selections can be made with redux toolkit. You can access the project source code.",
+  },
+  {
+    href: "https://github.com/furkanislek/patikastore",
+    imgSrc:
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/76527169/314514538-0949a7df-848e-4497-bb04-d54269772bf1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250101T125057Z&X-Amz-Expires=300&X-Amz-Signature=f30c9476841ed91ab5fd4f50782b4f0826f6fd77d73130306f25edd95199e281&X-Amz-SignedHeaders=host",
+    title: "PatikaStore",
+    description:
+      "The application made to develop react native within the scope of the pathway.",
+  },
+];
+
 const PortfolioPage = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-
 
   const skillRef = useRef<HTMLDivElement | null>(null);
   const isSkillRefInView = useInView(skillRef, { margin: "-100px" });
 
-  const experienceRef = useRef<HTMLDivElement | null>(null);
-
-  const educationRef = useRef<HTMLDivElement | null>(null);
   return (
     <motion.div
       className="h-full"
@@ -23,175 +100,55 @@ const PortfolioPage = () => {
         <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-36 flex flex-col gap-24 md:gap-32 lg:gap-48 xl:gap-64 lg:w-1/1 lg:pr-0 xl:w-1/1">
           <div className="flex flex-col gap-12 justify-center ">
             <h1 className="font-bold text-2xl">ReactJs - NextJs Projects</h1>
-            <div className="flex md:flex-row md:justify-between md:flex-wrap flex-col justify-center items-center gap-8 ">
-              <div className="max-w-sm min-w-1/3 bg-white border border-gray-800 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20">
-                <a
-                  href="https://github.com/furkanislek/rixit-service"
-                  className="cursor-pointer"
-                  target="_blank"
+            <div className="flex md:flex-row md:justify-evenly md:flex-wrap flex-col justify-center items-center gap-4 ">
+              {projects.map((project: any, index: any) => (
+                <div
+                  className="max-w-sm min-w-1/3 bg-white border border-gray-800 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20 "
+                  key={index}
                 >
-                  <img className="rounded-t-lg" src="/rixit.png" alt="" />
-                </a>
-                <div className="p-5">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    Rixit Service One Page
-                  </h5>
-                  <p className="mb-3 font-normal text-gray-700 ">
-                    This project is one page made using nextjs and tailwindcss.
-                    Pixcel perfect work was done with Figma design. Suitable for
-                    responsive design. You can look at the details for demo and
-                    source code.
-                  </p>
                   <a
-                    href="https://github.com/furkanislek/rixit-service"
+                    href={project.href}
+                    className="cursor-pointer"
                     target="_blank"
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
-                    Source Code
-                    <svg
-                      className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M1 5h12m0 0L9 1m4 4L9 9"
-                      />
-                    </svg>
+                    <img
+                      className="rounded-t-lg h-52 w-full object-cover"
+                      src={project.imgSrc}
+                      alt=""
+                    />
                   </a>
-                </div>
-              </div>
-              <div className="max-w-sm min-w-1/3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20">
-                <a
-                  href="https://github.com/furkanislek/rixit-service"
-                  className="cursor-pointer"
-                  target="_blank"
-                >
-                  <img className="rounded-t-lg" src="/rixit.png" alt="" />
-                </a>
-                <div className="p-5">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    Rixit Service One Page
-                  </h5>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    This project is one page made using nextjs and tailwindcss.
-                    Pixcel perfect work was done with Figma design. Suitable for
-                    responsive design. You can look at the details for demo and
-                    source code.
-                  </p>
-                  <a
-                    href="https://github.com/furkanislek/rixit-service"
-                    target="_blank"
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Source Code
-                    <svg
-                      className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
+                  <div className="p-5">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                      {project.title}
+                    </h5>
+                    <p className="mb-3 font-normal text-gray-700 h-48 text-justify">
+                      {project.description}
+                    </p>
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M1 5h12m0 0L9 1m4 4L9 9"
-                      />
-                    </svg>
-                  </a>
+                      Source Code
+                      <svg
+                        className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 10"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M1 5h12m0 0L9 1m4 4L9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-              </div>
-              <div className="max-w-sm min-w-1/3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20">
-                <a
-                  href="https://github.com/furkanislek/rixit-service"
-                  className="cursor-pointer"
-                  target="_blank"
-                >
-                  <img className="rounded-t-lg" src="/rixit.png" alt="" />
-                </a>
-                <div className="p-5">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    Rixit Service One Page
-                  </h5>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    This project is one page made using nextjs and tailwindcss.
-                    Pixcel perfect work was done with Figma design. Suitable for
-                    responsive design. You can look at the details for demo and
-                    source code.
-                  </p>
-                  <a
-                    href="https://github.com/furkanislek/rixit-service"
-                    target="_blank"
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Source Code
-                    <svg
-                      className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M1 5h12m0 0L9 1m4 4L9 9"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-              <div className="max-w-sm min-w-1/3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20">
-                <a
-                  href="https://github.com/furkanislek/rixit-service"
-                  className="cursor-pointer"
-                  target="_blank"
-                >
-                  <img className="rounded-t-lg" src="/rixit.png" alt="" />
-                </a>
-                <div className="p-5">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    Rixit Service One Page
-                  </h5>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    This project is one page made using nextjs and tailwindcss.
-                    Pixcel perfect work was done with Figma design. Suitable for
-                    responsive design. You can look at the details for demo and
-                    source code.
-                  </p>
-                  <a
-                    href="https://github.com/furkanislek/rixit-service"
-                    target="_blank"
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Source Code
-                    <svg
-                      className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M1 5h12m0 0L9 1m4 4L9 9"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
+              ))}
             </div>
 
             <motion.svg
@@ -226,175 +183,55 @@ const PortfolioPage = () => {
             >
               <div className="flex flex-col gap-12 justify-center ">
                 <h1 className="font-bold text-2xl">Flutter - React Native</h1>
-                <div className="flex lg:flex-row md:justify-around md:flex-wrap flex-col justify-center items-center ">
-                  <div className="max-w-sm min-w-1/3 bg-white border border-gray-800 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20">
-                    <a
-                      href="https://github.com/furkanislek/rixit-service"
-                      className="cursor-pointer"
-                      target="_blank"
+                <div className="flex md:flex-row md:justify-evenly md:flex-wrap flex-col justify-center items-center gap-4  ">
+                  {projectsMobile.map((project: any, index: any) => (
+                    <div
+                      className="max-w-sm min-w-1/3 bg-white border border-gray-800 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20 "
+                      key={index}
                     >
-                      <img className="rounded-t-lg" src="/rixit.png" alt="" />
-                    </a>
-                    <div className="p-5">
-                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                        Rixit Service One Page
-                      </h5>
-                      <p className="mb-3 font-normal text-gray-700 ">
-                        This project is one page made using nextjs and
-                        tailwindcss. Pixcel perfect work was done with Figma
-                        design. Suitable for responsive design. You can look at
-                        the details for demo and source code.
-                      </p>
                       <a
-                        href="https://github.com/furkanislek/rixit-service"
+                        href={project.href}
+                        className="cursor-pointer"
                         target="_blank"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                       >
-                        Source Code
-                        <svg
-                          className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 10"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9"
-                          />
-                        </svg>
+                        <img
+                          className="rounded-t-lg h-120 w-full object-cover"
+                          src={project.imgSrc}
+                          alt=""
+                        />
                       </a>
-                    </div>
-                  </div>
-                  <div className="max-w-sm min-w-1/3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20">
-                    <a
-                      href="https://github.com/furkanislek/rixit-service"
-                      className="cursor-pointer"
-                      target="_blank"
-                    >
-                      <img className="rounded-t-lg" src="/rixit.png" alt="" />
-                    </a>
-                    <div className="p-5">
-                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                        Rixit Service One Page
-                      </h5>
-                      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                        This project is one page made using nextjs and
-                        tailwindcss. Pixcel perfect work was done with Figma
-                        design. Suitable for responsive design. You can look at
-                        the details for demo and source code.
-                      </p>
-                      <a
-                        href="https://github.com/furkanislek/rixit-service"
-                        target="_blank"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
-                        Source Code
-                        <svg
-                          className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 10"
+                      <div className="p-5">
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                          {project.title}
+                        </h5>
+                        <p className="mb-3 text-sm font-normal text-gray-700 h-48 text-justify">
+                          {project.description}
+                        </p>
+                        <a
+                          href={project.href}
+                          target="_blank"
+                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5"
                         >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9"
-                          />
-                        </svg>
-                      </a>
+                          Source Code
+                          <svg
+                            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 14 10"
+                          >
+                            <path
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M1 5h12m0 0L9 1m4 4L9 9"
+                            />
+                          </svg>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <div className="max-w-sm min-w-1/3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20">
-                    <a
-                      href="https://github.com/furkanislek/rixit-service"
-                      className="cursor-pointer"
-                      target="_blank"
-                    >
-                      <img className="rounded-t-lg" src="/rixit.png" alt="" />
-                    </a>
-                    <div className="p-5">
-                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                        Rixit Service One Page
-                      </h5>
-                      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                        This project is one page made using nextjs and
-                        tailwindcss. Pixcel perfect work was done with Figma
-                        design. Suitable for responsive design. You can look at
-                        the details for demo and source code.
-                      </p>
-                      <a
-                        href="https://github.com/furkanislek/rixit-service"
-                        target="_blank"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
-                        Source Code
-                        <svg
-                          className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 10"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9"
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="max-w-sm min-w-1/3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-100 dark:border-gray-100 p-2 mb-20">
-                    <a
-                      href="https://github.com/furkanislek/rixit-service"
-                      className="cursor-pointer"
-                      target="_blank"
-                    >
-                      <img className="rounded-t-lg" src="/rixit.png" alt="" />
-                    </a>
-                    <div className="p-5">
-                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                        Rixit Service One Page
-                      </h5>
-                      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                        This project is one page made using nextjs and
-                        tailwindcss. Pixcel perfect work was done with Figma
-                        design. Suitable for responsive design. You can look at
-                        the details for demo and source code.
-                      </p>
-                      <a
-                        href="https://github.com/furkanislek/rixit-service"
-                        target="_blank"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
-                        Source Code
-                        <svg
-                          className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 10"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9"
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </motion.h1>

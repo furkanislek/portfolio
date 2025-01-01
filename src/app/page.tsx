@@ -11,7 +11,7 @@ const Homepage = () => {
       transition={{ duration: 1 }}
     >
       <div className="h-full flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-24 xl:px-36">
-        <div className="h-1/2 relative lg:h-full lg:w-1/2">
+        <div className="h-1/2 relative lg:h-5/6 lg:w-1/2">
           <Image
             src="/pp.png"
             alt="Profile Picture"
