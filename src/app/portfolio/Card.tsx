@@ -14,7 +14,7 @@ const projects = [
       "https://user-images.githubusercontent.com/76527169/190879487-948d6e29-1e1d-4658-9106-8659ed414c3f.png ",
     title: "React Fimple Credit Calculate",
     description:
-      "React Credit Calculator application. In this project, by using ReactJs, it is possible to determine the monthly installment amount and the total repayment amount based on the credit amount, the number of installments, the monthly interest rate and the installment interval.",
+      "React Credit Calculator application. In this project, by using ReactJs, it is possible to determine the monthly installment amount and the total repayment amount based on the credit amount, the number of installments, the monthly interest rate and the installment interval. ",
   },
   {
     href: "https://github.com/furkanislek/Portfolio-React",
