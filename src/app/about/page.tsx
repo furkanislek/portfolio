@@ -37,7 +37,7 @@ const AboutPage = () => {
             />
             <h1 className="font-bold text-2xl">BIOGRAPHY</h1>
             <p className="text-lg text-justify italic">
-              Hi, I'm Furkan. I used to work in a different sector, but I've
+              Hi, I'm Furkan. I used to work in a different sector, but I have
               switched to this one because it's my dream job. I've been working
               on non-code for years. This year, I started working as a web
               developer and I am now a full stack developer in the finance
