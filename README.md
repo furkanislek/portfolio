@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) project .
+Visit my web site [furkanislek.vercel.app](https://furkanislek.vercel.app)
 
 ![image](https://github.com/user-attachments/assets/06188f4a-4d4e-4e2f-bb4c-4e1427ae24d8)
 ![image](https://github.com/user-attachments/assets/bcefbdd7-bc1f-439d-9090-f0dcfe3d7679)
