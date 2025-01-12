@@ -4,6 +4,13 @@ import { motion, useInView, useScroll } from "framer-motion";
 
 const projects = [
   {
+    href: "https://github.com/furkanislek/mars-explorer/",
+    imgSrc: "/mars.png",
+    title: "Mars Explorer One Page",
+    description:
+      "This project is one page made using nextjs and tailwindcss. Pixcel perfect work was done with Figma design. Suitable for responsive design. You can look at the details for demo and source code.",
+  },
+  {
     href: "https://github.com/furkanislek/rixit-service",
     imgSrc: "/rixit.png",
     title: "Rixit Service One Page",
