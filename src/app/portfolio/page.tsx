@@ -18,6 +18,13 @@ const projects = [
       "This project is one page made using nextjs and tailwindcss. Pixcel perfect work was done with Figma design. Suitable for responsive design. You can look at the details for demo and source code.",
   },
   {
+    href: "https://github.com/furkanislek/admin-dashboard",
+    imgSrc: "/admin-dashboard.png",
+    title: "Admin Dashboard",
+    description:
+      "Admin Dashboard is a modern and dynamic management panel built with Next.js, Tailwind CSS, Redux Toolkit, Framer Motion, and Recharts. It features a user-friendly interface with smooth animations and interactive charts. Optimized for performance, it offers real-time data visualization and efficient state management. ",
+  },
+  {
     href: "https://github.com/furkanislek/Fimple-Credit-Calculate",
     imgSrc:
       "https://user-images.githubusercontent.com/76527169/190879487-948d6e29-1e1d-4658-9106-8659ed414c3f.png ",
