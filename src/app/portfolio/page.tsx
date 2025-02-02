@@ -22,7 +22,7 @@ const projects = [
     imgSrc: "/admin-dashboard.png",
     title: "Admin Dashboard",
     description:
-      "Admin Dashboard is a modern and dynamic management panel built with Next.js, Tailwind CSS, Redux Toolkit, Framer Motion, and Recharts. It features a user-friendly interface with smooth animations and interactive charts. Optimized for performance, it offers real-time data visualization and efficient state management. ",
+      "Admin Dashboard is a modern management panel built with Next.js, Tailwind CSS, Redux Toolkit, Framer Motion, and Recharts, featuring smooth animations, interactive charts, and real-time data visualization. ",
   },
   {
     href: "https://github.com/furkanislek/Fimple-Credit-Calculate",
